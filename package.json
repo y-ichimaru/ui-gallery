@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build:lib": "vue-cli-service build --target lib --name build ./src/main.ts",
+    "build:lib": "vue-cli-service build --target lib --name build ./src/main.ts --dest build",
     "build:type": "tsc --emitDeclarationOnly --declaration -P tsconfig.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o ui-gallery"
