@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o ui-gallery"
   },
-  "main": "build/build.js",
+  "main": "build/build.common.js",
   "types": "src/main.d.ts",
   "repository": {
     "type": "git",
