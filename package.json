@@ -10,7 +10,7 @@
     "build:lib": "vue-cli-service build --target lib --name build ./src/index.ts --dest build",
     "build:type": "tsc --emitDeclarationOnly --declaration -P tsconfig.json",
     "storybook": "start-storybook -p 6006",
-    "build:story": "build-storybook -c .storybook -o storybook"
+    "build:story": "build-storybook -c .storybook -o docs"
   },
   "main": "build/build.common.js",
   "browser": {
