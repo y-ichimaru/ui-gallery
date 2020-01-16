@@ -7933,7 +7933,7 @@ var component = normalizeComponent(
 
 installComponents_default()(component, {VBtn: VBtn_VBtn})
 
-// CONCATENATED MODULE: ./src/main.ts
+// CONCATENATED MODULE: ./src/index.ts
 /**
  * @package UI-Gallery
  * @description 汎用のVue Component群をまとめたパッケージです．
@@ -7941,7 +7941,7 @@ installComponents_default()(component, {VBtn: VBtn_VBtn})
 
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
-/* concated harmony reexport HelloWorld */__webpack_require__.d(__webpack_exports__, "HelloWorld", function() { return components_HelloWorld; });
+/* concated harmony reexport Okada */__webpack_require__.d(__webpack_exports__, "Okada", function() { return components_HelloWorld; });
 
 
 
