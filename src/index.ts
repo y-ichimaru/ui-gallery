@@ -3,7 +3,8 @@
  * @description 汎用のVue Component群をまとめたパッケージです．
  */
 import Okada from "@/components/HelloWorld.vue";
-
-export {
+import "./style.scss";
+export
+{
     Okada
 };

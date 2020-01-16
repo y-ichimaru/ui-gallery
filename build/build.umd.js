@@ -1704,6 +1704,13 @@ module.exports = !nativeAssign || fails(function () {
 
 /***/ }),
 
+/***/ "6485":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "6544":
 /***/ (function(module, exports) {
 
@@ -7933,11 +7940,15 @@ var component = normalizeComponent(
 
 installComponents_default()(component, {VBtn: VBtn_VBtn})
 
+// EXTERNAL MODULE: ./src/hoge.scss
+var hoge = __webpack_require__("6485");
+
 // CONCATENATED MODULE: ./src/index.ts
 /**
  * @package UI-Gallery
  * @description 汎用のVue Component群をまとめたパッケージです．
  */
+
 
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
