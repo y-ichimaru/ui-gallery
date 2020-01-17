@@ -8,14 +8,16 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "declaration": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "./build",
     "types": [
       "webpack-env",
       "jest",
-      "vuetify"
+      "vuetify",
+      "./logger"
     ],
     "paths": {
       "@/*": [
