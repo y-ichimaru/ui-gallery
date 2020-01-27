@@ -7,9 +7,9 @@ import {Component, Vue} from "vue-property-decorator";
 @Component
 export default class DialogBase<T, TResult> extends Vue
 {
+    public context?: any = {};
     private resolve?: (value?: TResult | PromiseLike<TResult | undefined> | undefined) => void = undefined;
     private isShow = false;
-    private context?: any = {roomName: "ss"};
 
     /**
      * @summary ダイアログを開きます.
@@ -29,7 +29,7 @@ export default class DialogBase<T, TResult> extends Vue
     /**
      * @summary ダイアログを閉じて編集済みの内容を返却します.
      */
-    private close(result?: TResult)
+    public close(result?: TResult)
     {
         this.isShow = false;
         this.resolve!(result);

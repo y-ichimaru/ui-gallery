@@ -13,7 +13,7 @@ export class Logger
         this.onTraceHandler(content, type);
     }
 
-    public onErrorHandler: (log: unknown, type: LogType) => void = (log, type) => logger.error(log);
+    public onErrorHandler: (log: unknown, type: LogType) => void = (log, type) => console.error(log);
     public error(content: any, type = LogType.Log): void
     {
         this.onErrorHandler(content, type);

@@ -11,7 +11,7 @@ import ConfirmDialog from "./components/ConfirmDialog.vue";
 import {ConfirmDialogContent} from "./components/ConfirmDialogContent";
 import ElapsedTimeClock from "./components/ElapsedTimeClock.vue";
 import VolumeIndicator from "./components/VolumeIndicator.vue";
-import GudaGuda from "./components/GudaGuda.vue";
+import ItemWrapGrid from "./components/ItemWrapGrid.vue";
 
 /**
  * @package Libs
@@ -53,6 +53,7 @@ export
     VolumeIndicator,
     ConfirmDialogContent,
     DialogBase,
+    ItemWrapGrid,
     // native libs
     DragableBox,
     Delegate,

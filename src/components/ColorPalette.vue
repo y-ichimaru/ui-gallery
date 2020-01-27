@@ -1,9 +1,5 @@
 <template>
-    <v-menu
-        bottom
-        origin="center center"
-        transition="scale-transition"
-    >
+    <v-menu bottom origin="center center" transition="scale-transition">
         <template v-slot:activator="{ on }">
             <v-btn
                 elevation="1"
@@ -11,14 +7,10 @@
                 dark
                 :style="{minWidth:buttonWidth+'px',width:buttonWidth+'px'}"
                 v-on="on"
-            >
-            </v-btn>
+            ></v-btn>
         </template>
 
-        <v-item-group
-            mandatory
-            :value="value"
-        >
+        <v-item-group mandatory :value="value">
             <v-card :style="{background:backgroundColor}">
                 <div
                     class="d-flex flex-wrap"
@@ -89,7 +81,7 @@ export default class ColorPalette extends Vue
 </script>
 <style scoped>
 .active::after {
-    background: #ff717100 !@/libsant;
+    background: #ff717100 !important;
     /* margin-left: -22px!@/libsant; */
     z-index: 333;
     /* position: absolute; */

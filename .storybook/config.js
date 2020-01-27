@@ -5,7 +5,7 @@ import Vue from "vue";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.css";
 import ThemeSelecterContainer from "../src/stories/ThemeSelecterContainer.vue";
-
+import "../src/style.scss";
 Vue.use(Vuetify, {
     iconfont: "mdi"
 });
@@ -18,11 +18,12 @@ addDecorator(() => ({
     template: `
     <v-app>
         <ThemeSelecterContainer>
-            <div class="pa-8">
+            <div class="pa-4 scroll" style="height:100vh;">
                 <story/>
             </div>
         </ThemeSelecterContainer>
-    </v-app>`
+    </v-app>
+    `
 }));
 
 addParameters({
