@@ -29,6 +29,7 @@ import
     DeviceStreamManager,
     RtcMediaStreamWrapper
 } from "./libs/WebRtc/DeviceStreamManager";
+import {WebSocketData, WebSocketProvider} from "./libs/WebSocket/WebSocket";
 import {getUrlParameter} from "./libs/utilities/StringUtility";
 import * as WebRtcConfig from "./libs/WebRtc/WebRtcConfig";
 import {ScreenShareRoom} from "./libs/WebRtc/ScreenShareRoom";
@@ -70,5 +71,5 @@ export
     getUrlParameter,
     BrowserType,
     BrowserUtility,
-    Logger
+    Logger, WebSocketData, WebSocketProvider
 };

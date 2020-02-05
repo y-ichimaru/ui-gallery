@@ -26,8 +26,10 @@ import * as WebRtcConfig from "./libs/WebRtc/WebRtcConfig";
 import {ScreenShareRoom} from "./libs/WebRtc/ScreenShareRoom";
 import {VideoChatConnection, PeerStream} from "./libs/WebRtc/VideoChatRoom";
 import {BrowserType, BrowserUtility} from "./libs/utilities/BrowserUtility";
+import {WebSocketData, WebSocketProvider} from "./libs/WebSocket/WebSocket";
 import "./style.scss";
-declare global {
+declare global
+{
     var logger: Logger;
 }
-export {ColorPalette, DragableBoxView, DateTimeText, DateText, ConfirmDialog, ElapsedTimeClock, VolumeIndicator, ConfirmDialogContent, DialogBase, ItemWrapGrid, DragableBox, Delegate, DeviceInfo, DeviceList, DeviceMediaStreamWrapper, DeviceStreamManager, RtcMediaStreamWrapper, WebRtcConfig, ScreenShareRoom, VideoChatConnection, PeerStream, IDisposeable, getUrlParameter, BrowserType, BrowserUtility, Logger};
+export {ColorPalette, DragableBoxView, DateTimeText, DateText, ConfirmDialog, ElapsedTimeClock, VolumeIndicator, ConfirmDialogContent, DialogBase, ItemWrapGrid, DragableBox, Delegate, DeviceInfo, DeviceList, DeviceMediaStreamWrapper, DeviceStreamManager, RtcMediaStreamWrapper, WebRtcConfig, ScreenShareRoom, VideoChatConnection, PeerStream, IDisposeable, getUrlParameter, BrowserType, BrowserUtility, Logger, WebSocketData, WebSocketProvider};

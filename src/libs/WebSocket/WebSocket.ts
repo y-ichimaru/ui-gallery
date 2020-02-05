@@ -1,19 +1,15 @@
-import {MultiCastDelegate} from "@/libs/Core/Delegate";
-
-/**
- * @summary WebSocketサーバーのURL
- */
-const WEB_SOCKET_URL = "ws://user:password@localhost:443?key=test&pass=passssss";
+import {MultiCastDelegate} from "../Core/Delegate";
+import {DateTime} from "luxon";
 
 /**
  * @summary WebSocketにより送信するデータを表します。
  */
-class WebSocketData
+export class WebSocketData<T>
 {
-    content?: object;
-    type?: WebSocketMessageType;
-    date?: Date;
-    constructor(init?: Partial<WebSocketData>)
+    content?: T;
+    type?: number | string;
+    date?: DateTime;
+    constructor(init?: Partial<WebSocketData<any>>)
     {
         Object.assign(this, init);
     }
@@ -28,24 +24,24 @@ export class WebSocketProvider
     /**
      * @summary データを受け取ったとき
      */
-    public static _onDataRecieved: MultiCastDelegate<(data: any) => void> = new MultiCastDelegate<(data: any) => void>();
+    public _onDataRecieved: MultiCastDelegate<(data: WebSocketData<any>) => void> = new MultiCastDelegate<(data: WebSocketData<any>) => void>();
 
     /**
      * WebSocketの接続
      */
-    private static connection: WebSocket | null;
+    private connection?: WebSocket = undefined;
 
     /**
      * @summary 接続中かどうか
      */
-    private static _isConnecting: boolean = false;
+    private _isConnecting: boolean = false;
     // #endregion
 
     // #region public getters
     /**
      * @summary 接続中かどうか
      */
-    public static get isConnecting(): boolean
+    public get isConnecting(): boolean
     {
         return this._isConnecting;
     }
@@ -55,7 +51,7 @@ export class WebSocketProvider
     /**
      * @summary データを受信したとき.
      */
-    public static get onDataRecieved(): MultiCastDelegate<(data: WebSocketData) => void>
+    public get onDataRecieved(): MultiCastDelegate<(data: WebSocketData<any>) => void>
     {
         return this._onDataRecieved;
     }
@@ -63,21 +59,17 @@ export class WebSocketProvider
     /**
      * @summary WebSoket Serverに接続します。
      */
-    public static connect(): Promise<void>
+    public connect(url: string): Promise<void>
     {
-        const connection = this.connection = new WebSocket(WEB_SOCKET_URL);
+        const connection = this.connection = new WebSocket(url);
         if (!connection) throw new Error("接続に失敗しました。");
 
         connection.onmessage = e =>
         {
             const data = e.data;
-            logger.log(data);
-            // this._onDataRecieved.invoke(JSON.parse(data));
         };
-        connection.onerror = e => logger.error(e);
+        connection.onerror = (e) => logger.error(e);
         this._isConnecting = true;
-
-        setInterval(() => this.send(1), 1000);
 
         return new Promise(resolve =>
         {
@@ -88,7 +80,7 @@ export class WebSocketProvider
     /**
      * @summary WebSoket Serverへの接続を切断します。
      */
-    public static disconnect(): Promise<void>
+    public disconnect(): Promise<void>
     {
         return new Promise(resolve =>
         {
@@ -104,7 +96,7 @@ export class WebSocketProvider
      * @summary データを送信します
      * @param data 送信するデータ
      */
-    public static send(data: any): void
+    public send(data: WebSocketData<any>): void
     {
         const dataStr = typeof (data) === "string" ? data : JSON.stringify(data);
         if (!this.connection)
@@ -118,79 +110,3 @@ export class WebSocketProvider
     // #region private methods
     // endregion
 }
-
-/**
- * @summary 各種機能ごとのメッセージのタイプ
- */
-export enum WebSocketMessageType
-{
-    Chat,
-    Profile,
-    ShutRoom,
-}
-
-/**
- * @summary 指定したタイプのメッセージの送受信を提供します。
- */
-export class WebSocketManager
-{
-    // #region private fields
-    /**
-     * 指定したタイプのメッセージを受信したとき
-     */
-    private _onDataRecieved: MultiCastDelegate<(data: object) => void> = new MultiCastDelegate<(data: object) => void>();
-
-    /**
-     * @summary 送受信するメッセージのタイプ
-     */
-    private messageType: WebSocketMessageType;
-    // #endregion
-
-    // #region public getters
-    public get onDataRecieved(): MultiCastDelegate<(data: object) => void>
-    {
-        return this._onDataRecieved;
-    }
-    // #endregion
-
-    // #region public methods
-    /**
-     * コンストラクタ
-     * @param messageType 送受信するメッセージのタイプ
-     */
-    public constructor(messageType: WebSocketMessageType)
-    {
-        this.messageType = messageType;
-
-        // メッセージを受信した際
-        WebSocketProvider.onDataRecieved.add((data: any) =>
-        {
-            if (!data)
-            {
-                console.warn("recieved invalid data in websocket");
-                return;
-            }
-
-            if (data.type === messageType)
-            {
-                this.onDataRecieved.invoke(data);
-            }
-        });
-    }
-
-    /**
-     * メッセージを送信します。
-     * @param data 送信するデータ
-     */
-    public send(data: object)
-    {
-        WebSocketProvider.send(new WebSocketData({
-            content: data,
-            type: this.messageType,
-            date: new Date()
-        }));
-    }
-    // #endregion
-}
-
-// WebSocketProvider.connect();

@@ -18,8 +18,10 @@
     "url": "git@github.com:scene-live/ui-gallery.git"
   },
   "dependencies": {
+    "@types/luxon": "^1.21.0",
     "core-js": "^3.4.4",
     "global": "^4.4.0",
+    "luxon": "^1.22.0",
     "skyway-js": "^2.0.5",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",

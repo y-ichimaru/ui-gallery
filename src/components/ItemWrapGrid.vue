@@ -16,11 +16,35 @@ import {Vue, Prop, Component} from "vue-property-decorator";
 @Component
 export default class ItemWrapGrid extends Vue
 {
-    private columnCount = 4;
+    private columnCount = 0;
     /**
      * 表示するアイテム
      */
     @Prop({default: []}) readonly items!: unknown[];
+
+    /**
+     * wrapする条件
+     */
+    @Prop({
+        default: () => [
+            {
+                width: 1280,
+                columnCount: 4
+            },
+            {
+                width: 780,
+                columnCount: 3
+            },
+            {
+                width: 580,
+                columnCount: 2
+            },
+            {
+                width: 0,
+                columnCount: 1
+            }
+        ]
+    }) readonly breakWidths!: any[];
 
     private mounted()
     {
@@ -36,21 +60,13 @@ export default class ItemWrapGrid extends Vue
     private onResize()
     {
         const width = this.$el.getBoundingClientRect().width;
-        if (width <= 520)
+        for (const item of this.breakWidths)
         {
-            this.columnCount = 1;
-        }
-        else if (width <= 780)
-        {
-            this.columnCount = 2;
-        }
-        else if (width <= 1280)
-        {
-            this.columnCount = 3;
-        }
-        else
-        {
-            this.columnCount = 4;
+            if (item.width < width)
+            {
+                this.columnCount = item.columnCount;
+                return;
+            }
         }
     }
 }

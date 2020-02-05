@@ -1,8 +1,5 @@
 <template>
-    <canvas
-        ref="canvas"
-        :style="{height:height+'px',width: '100%'}"
-    ></canvas>
+    <canvas ref="canvas" :style="{height:height+'px',width: '100%'}"></canvas>
 </template>
 <script>
 
@@ -30,6 +27,10 @@ export default {
         color: {
             type: String,
             default: "#ff9d55"
+        },
+        emptyColor: {
+            type: String,
+            default: "rgb(180,180,180)"
         }
     },
     data()
@@ -114,7 +115,7 @@ export default {
                 {
                     for (let i = 0; i < this.indicatorCount; i++)
                     {
-                        context.fillStyle = "#b0b0b0";
+                        context.fillStyle = "#bd0b0b0";
                         roundRect(context, i * rectItemWidth + this.span, 2, rectItemWidth - (this.span * 2), canvas.height - 4, 3, true, false);
                     }
                     return;
@@ -144,7 +145,7 @@ export default {
                     }
                     else
                     {
-                        context.fillStyle = "#b0b0b0";
+                        context.fillStyle = this.emptyColor;
                     }
 
                     roundRect(context, i * rectItemWidth + this.span, 2, rectItemWidth - (this.span * 2), canvas.height - 4, 3, true, false);
