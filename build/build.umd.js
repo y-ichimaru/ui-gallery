@@ -29087,6 +29087,94 @@ var ItemWrapGrid_component = normalizeComponent(
 )
 
 /* harmony default export */ var components_ItemWrapGrid = (ItemWrapGrid_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1a9361b4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ContextMenu.vue?vue&type=template&id=d054aa4a&
+var ContextMenuvue_type_template_id_d054aa4a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-dialog',{ref:"menu",attrs:{"overlay-color":"transpalent","max-width":"200"},model:{value:(_vm.isShow),callback:function ($$v) {_vm.isShow=$$v},expression:"isShow"}},[_c('v-card',[_vm._t("default")],2)],1)}
+var ContextMenuvue_type_template_id_d054aa4a_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ContextMenu.vue?vue&type=template&id=d054aa4a&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__("25f0");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ContextMenu.vue?vue&type=script&lang=ts&
+
+
+
+
+
+
+
+
+
+
+var ContextMenuvue_type_script_lang_ts_ContextMenu =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(ContextMenu, _Vue);
+
+  function ContextMenu() {
+    var _this;
+
+    _classCallCheck(this, ContextMenu);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContextMenu).apply(this, arguments));
+    _this.isShow = false;
+    return _this;
+  }
+  /**
+   * 指定した絶対座標にコンテキストメニューを表示します
+   * @param x x座標
+   * @param y y座標
+   */
+
+
+  _createClass(ContextMenu, [{
+    key: "show",
+    value: function show(x, y) {
+      this.isShow = true;
+      this.$nextTick(function () {
+        var menu = document.querySelector(".v-dialog");
+        if (!menu) return;
+        menu.style.position = "fixed";
+        menu.style.left = (x - 20).toString() + "px";
+        menu.style.top = (y - 20).toString() + "px";
+      });
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.isShow = false;
+    }
+  }]);
+
+  return ContextMenu;
+}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
+
+ContextMenuvue_type_script_lang_ts_ContextMenu = __decorate([vue_class_component_esm], ContextMenuvue_type_script_lang_ts_ContextMenu);
+/* harmony default export */ var ContextMenuvue_type_script_lang_ts_ = (ContextMenuvue_type_script_lang_ts_ContextMenu);
+// CONCATENATED MODULE: ./src/components/ContextMenu.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var components_ContextMenuvue_type_script_lang_ts_ = (ContextMenuvue_type_script_lang_ts_); 
+// CONCATENATED MODULE: ./src/components/ContextMenu.vue
+
+
+
+
+
+/* normalize component */
+
+var ContextMenu_component = normalizeComponent(
+  components_ContextMenuvue_type_script_lang_ts_,
+  ContextMenuvue_type_template_id_d054aa4a_render,
+  ContextMenuvue_type_template_id_d054aa4a_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var components_ContextMenu = (ContextMenu_component.exports);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
 var es_array_index_of = __webpack_require__("c975");
 
@@ -29342,9 +29430,6 @@ function _asyncToGenerator(fn) {
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
-var es_regexp_to_string = __webpack_require__("25f0");
-
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
 
 
@@ -32016,6 +32101,7 @@ var style = __webpack_require__("944d");
 
 
 
+
 /**
  * @package Libs
  * @description 汎用のライブラリをまとめたパッケージです．
@@ -32045,6 +32131,7 @@ var style = __webpack_require__("944d");
 /* concated harmony reexport ConfirmDialogContent */__webpack_require__.d(__webpack_exports__, "ConfirmDialogContent", function() { return ConfirmDialogContent_ConfirmDialogContent; });
 /* concated harmony reexport DialogBase */__webpack_require__.d(__webpack_exports__, "DialogBase", function() { return components_DialogBase; });
 /* concated harmony reexport ItemWrapGrid */__webpack_require__.d(__webpack_exports__, "ItemWrapGrid", function() { return components_ItemWrapGrid; });
+/* concated harmony reexport ContextMenu */__webpack_require__.d(__webpack_exports__, "ContextMenu", function() { return components_ContextMenu; });
 /* concated harmony reexport DragableBox */__webpack_require__.d(__webpack_exports__, "DragableBox", function() { return DragableBox_DragableBox; });
 /* concated harmony reexport Delegate */__webpack_require__.d(__webpack_exports__, "Delegate", function() { return Delegate_MultiCastDelegate; });
 /* concated harmony reexport DeviceInfo */__webpack_require__.d(__webpack_exports__, "DeviceInfo", function() { return DeviceStreamManager_DeviceInfo; });

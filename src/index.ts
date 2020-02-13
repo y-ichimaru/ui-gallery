@@ -12,6 +12,11 @@ import {ConfirmDialogContent} from "./components/ConfirmDialogContent";
 import ElapsedTimeClock from "./components/ElapsedTimeClock.vue";
 import VolumeIndicator from "./components/VolumeIndicator.vue";
 import ItemWrapGrid from "./components/ItemWrapGrid.vue";
+import ContextMenu from "./components/ContextMenu.vue";
+import NetworkTester from "./components/NetworkTester.vue";
+import AudioOutputTester from "./components/AudioOutputTester.vue";
+import AudioTester from "./components/AudioTester.vue";
+import FileDropArea from "./components/FileDropArea.vue";
 
 /**
  * @package Libs
@@ -35,6 +40,8 @@ import * as WebRtcConfig from "./libs/WebRtc/WebRtcConfig";
 import {ScreenShareRoom} from "./libs/WebRtc/ScreenShareRoom";
 import {VideoChatConnection, PeerStream} from "./libs/WebRtc/VideoChatRoom";
 import {BrowserType, BrowserUtility} from "./libs/utilities/BrowserUtility";
+
+// css
 import "./style.scss";
 
 declare global
@@ -55,6 +62,11 @@ export
     ConfirmDialogContent,
     DialogBase,
     ItemWrapGrid,
+    ContextMenu,
+    NetworkTester,
+    AudioOutputTester,
+    AudioTester,
+    FileDropArea,
     // native libs
     DragableBox,
     Delegate,

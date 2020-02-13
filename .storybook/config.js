@@ -6,14 +6,39 @@ import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.css";
 import ThemeSelecterContainer from "../src/stories/ThemeSelecterContainer.vue";
 import "../src/style.scss";
+import colors from "vuetify/lib/util/colors";
+import ja from "vuetify/src/locale/ja";
+
 Vue.use(Vuetify, {
     iconfont: "mdi"
 });
+import "../src/libs/logger";
 
 import {themes} from '@storybook/theming';
 
+// init font
+(() =>
+{
+    const styleElement = document.createElement("style");
+    document.head.appendChild(styleElement);
+    styleElement.innerHTML = ".v-application{font-family: 'nunito', '游ゴシック体', '游ゴシック', YuGothic, 'Yu Gothic M', sans-serif;font-weight: 500!important;} .v-card__subtitle, .v-card__text {font-weight: 500;}";
+})();
+
 addDecorator(() => ({
-    vuetify: new Vuetify(),
+    vuetify: new Vuetify({
+        theme: {
+            options: {
+                customProperties: true
+            },
+        },
+        lang: {
+            locales: {ja},
+            current: "ja"
+        },
+        icons: {
+            iconfont: "mdi"
+        }
+    }),
     components: {ThemeSelecterContainer},
     template: `
     <v-app>

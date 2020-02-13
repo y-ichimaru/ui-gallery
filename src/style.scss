@@ -96,6 +96,13 @@
   scroll-behavior: smooth;
 }
 
+.crop {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .absolute-center {
   top: 0;
   bottom: 0;
@@ -110,3 +117,5 @@
 html {
   overflow-y: hidden;
 }
+
+@import url("https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css");
