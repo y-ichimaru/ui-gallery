@@ -12,6 +12,15 @@ yarn install
 yarn serve
 ```
 
+### 型定義の生成
+```
+yarn build:type
+```
+tsc .vueファイルの型定義が生成されないので.vueファイルから.tsファイルを生成して型定義をビルド後削除するスクリプトを実行する必要があります。
+スクリプト実行にはdotnetが必要なのでを[こちら](https://dotnet.microsoft.com/download)よりインストールしておいてください。
+
+※ソースはbuild-type.csxを参照
+
 ### StoryBookのプロダクションビルド
 
 ```
