@@ -1,11 +1,27 @@
 # vue-ui-gallery
 
+# 自身のプロジェクトにインストールるするには
+Githubのリポジトリをそのままnpmパッケージとして利用することができます。
+packeage.jsonに下記を追加してyarnを実行するか
+```
+{
+  "ui-gallery": "ssh+git@github.com:scene-live/ui-gallery.git"
+}
+```
+またはクローンしてシンボリックリンクを貼って利用してください
+```
+$git clone git@github.com:scene-live/ui-gallery.git
+$cd ui-gallery
+$yarn link
+$cd ../あなたのプロジェクト
+$yarn link ui-gallery
+```
+
+#開発するには
 ## Project setup
 ```
 yarn install
 ```
-
-## DEMO
 
 ### StoryBookの開発サーバー起動
 ```
