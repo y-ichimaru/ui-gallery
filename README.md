@@ -13,19 +13,31 @@ packeage.jsonに下記を追加してyarnを実行するか
 $git clone git@github.com:scene-live/ui-gallery.git
 $cd ui-gallery
 $yarn link
-$cd ../あなたのプロジェクト
+$cd ../path-to-your-project
 $yarn link ui-gallery
 ```
 
-#開発するには
+ローカルのGitリポジトリをインストールすることも可能です。インストールしたいプロジェクトのpackage.jsonにリポジトリのパスを指定してyarnを実行してください。
+```
+{
+  "ui-gallery": "../ui-gallery"
+}
+```
+
+# 開発するには
 ## Project setup
 ```
 yarn install
 ```
 
-### StoryBookの開発サーバー起動
+### 開発サーバー起動
 ```
-yarn serve
+yarn storybook
+```
+
+### ライブラリのビルド
+```
+yarn build
 ```
 
 ### 型定義の生成
