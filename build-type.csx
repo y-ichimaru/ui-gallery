@@ -42,3 +42,23 @@ await Task.WhenAll(
         )
     )
 );
+
+// import "*file.vue"をimpott "file" に書き換える
+var dstFiles = Directory.EnumerateFiles(@"./build", "*.d.ts", SearchOption.AllDirectories);
+await Task.WhenAll(dstFiles.Select(async item =>
+{
+    // 並列実行
+    await Task.Run(async () =>
+    {
+        string text = "";
+        using (var file = new StreamReader(item))
+        {
+            text = await file.ReadToEndAsync();
+            file.Close();
+        }
+        using (var writer = new StreamWriter(item))
+        {
+            await writer.WriteAsync(text.Replace(".vue", ""));
+        }
+    });
+}));

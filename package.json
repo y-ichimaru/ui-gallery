@@ -11,7 +11,7 @@
     "build:story": "build-storybook -c .storybook -o docs"
   },
   "main": "build/build.common.js",
-  "types": "types/src/index.d.ts",
+  "types": "build/src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:scene-live/ui-gallery.git"

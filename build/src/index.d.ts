@@ -2,21 +2,21 @@
  * @package UI-Gallery
  * @description 汎用のVue Component群をまとめたパッケージです．
  */
-import ColorPalette from "./components/ColorPalette.vue";
-import DragableBoxView from "./components/DragableBox.vue";
-import DateTimeText from "./components/DateTimeText.vue";
-import DateText from "./components/DateText.vue";
-import DialogBase from "./components/DialogBase.vue";
-import ConfirmDialog from "./components/ConfirmDialog.vue";
+import ColorPalette from "./components/ColorPalette";
+import DragableBoxView from "./components/DragableBox";
+import DateTimeText from "./components/DateTimeText";
+import DateText from "./components/DateText";
+import DialogBase from "./components/DialogBase";
+import ConfirmDialog from "./components/ConfirmDialog";
 import { ConfirmDialogContent } from "./components/ConfirmDialogContent";
-import ElapsedTimeClock from "./components/ElapsedTimeClock.vue";
-import VolumeIndicator from "./components/VolumeIndicator.vue";
-import ItemWrapGrid from "./components/ItemWrapGrid.vue";
-import ContextMenu from "./components/ContextMenu.vue";
-import NetworkTester from "./components/NetworkTester.vue";
-import AudioOutputTester from "./components/AudioOutputTester.vue";
-import AudioTester from "./components/AudioTester.vue";
-import FileDropArea from "./components/FileDropArea.vue";
+import ElapsedTimeClock from "./components/ElapsedTimeClock";
+import VolumeIndicator from "./components/VolumeIndicator";
+import ItemWrapGrid from "./components/ItemWrapGrid";
+import ContextMenu from "./components/ContextMenu";
+import NetworkTester from "./components/NetworkTester";
+import AudioOutputTester from "./components/AudioOutputTester";
+import AudioTester from "./components/AudioTester";
+import FileDropArea from "./components/FileDropArea";
 /**
  * @package Libs
  * @description 汎用のライブラリをまとめたパッケージです．

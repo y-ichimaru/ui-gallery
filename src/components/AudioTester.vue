@@ -41,7 +41,6 @@
 <script lang="ts">
 import {Vue, Prop, Component, Watch} from "vue-property-decorator";
 import VolumeIndicator from "./VolumeIndicator.vue";
-import RoomConnectionPage from "@/components/Managements/Rooms/RoomConnectionPage.vue";
 /**
  * @summary 接続設定ページのUIを提供します.
  */
