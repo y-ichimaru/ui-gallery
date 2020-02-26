@@ -1,0 +1,79 @@
+{
+    "root": true,
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:vue/essential",
+        "@vue/standard",
+        "@vue/typescript"
+    ],
+    "globals": {
+        "logger": true
+    },
+    "rules": {
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "no-unused-vars": "off",
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "one-line": [
+            0,
+            "check-open-brace",
+            "check-catch",
+            "check-finally",
+            "check-else",
+            "check-whitespace"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            2,
+            "double"
+        ],
+        "brace-style": [
+            "error",
+            "allman"
+        ],
+        "yoda": [
+            2,
+            "never",
+            {
+                "exceptRange": true
+            }
+        ]
+    },
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": 2015
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/__tests__/*.{j,t}s?(x)",
+                "**/tests/unit/**/*.spec.{j,t}s?(x)"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ]
+}

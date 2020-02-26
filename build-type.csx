@@ -43,7 +43,7 @@ await Task.WhenAll(
     )
 );
 
-// import "*file.vue"をimpott "file" に書き換える
+// import "file.vue"をimport "file" に書き換える
 var dstFiles = Directory.EnumerateFiles(@"./build", "*.d.ts", SearchOption.AllDirectories);
 await Task.WhenAll(dstFiles.Select(async item =>
 {

@@ -1,31 +1,29 @@
 <template>
     <div
-        class="strech drop-area relative"
+        v-ripple
+        class="strech drop-area d-flex flex-column justify-center aligh-center"
         :class="isDragOverring?'drop-area drag-over':''"
-        style="min-width:400px;"
+        style
         @dragover.prevent="onDragOver"
         @drop.prevent="drop"
         @dragleave="onDragLeave"
     >
-        <div class="absolute-center">
-            <v-icon
-                :class="isDragOverring?'upload-icon':''"
-                style="font-size:72px;margin-top:-20px;"
-                color="primary"
-            >mdi-cloud-upload-outline</v-icon>
-            <div class="mt-4" style="font-size:20px;">{{message}}</div>
-            <v-btn class="mt-6" color="primary">またはファイルを選択する</v-btn>
-        </div>
+        <v-icon
+            :class="isDragOverring?'upload-icon':''"
+            style="font-size:64px;margin-top:-20px;"
+            color="primary"
+        >mdi-cloud-upload-outline</v-icon>
+        <div class="mt-2" style="font-size:20px;">{{message}}</div>
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component} from "vue-property-decorator";
+import {Vue, Component, Prop} from "vue-property-decorator";
 
 /**
  * ファイルをドロップして受け取るエリアを提供します．
  */
 @Component
-export default class FileDropArea extends Vue
+export default class FileDropAreaCompact extends Vue
 {
     @Prop({default: "ファイルをドロップしてください"}) readonly message!: string;
     private isDragOverring = false;
@@ -59,9 +57,12 @@ export default class FileDropArea extends Vue
     border: 2px dashed rgba(127, 127, 127, 0.4);
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    padding: 48px;
     text-align: center;
     font: 20pt bold arial;
+}
+
+.drop-area:hover {
+    background: rgba(127, 127, 127, 0.2);
 }
 
 .drag-over {

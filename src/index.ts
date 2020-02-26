@@ -3,6 +3,7 @@
  * @description 汎用のVue Component群をまとめたパッケージです．
  */
 import ColorPalette from "./components/ColorPalette.vue";
+import ColorPaletteFlyout from "./components/ColorPaletteFlyout.vue";
 import DragableBoxView from "./components/DragableBox.vue";
 import DateTimeText from "./components/DateTimeText.vue";
 import DateText from "./components/DateText.vue";
@@ -17,6 +18,8 @@ import NetworkTester from "./components/NetworkTester.vue";
 import AudioOutputTester from "./components/AudioOutputTester.vue";
 import AudioTester from "./components/AudioTester.vue";
 import FileDropArea from "./components/FileDropArea.vue";
+import FileDropAreaCompact from "./components/FileDropAreaCompact.vue";
+import SplitView from "./components/SplitView.vue";
 
 /**
  * @package Libs
@@ -53,6 +56,7 @@ export
 {
     // vue components
     ColorPalette,
+    ColorPaletteFlyout,
     DragableBoxView,
     DateTimeText,
     DateText,
@@ -67,6 +71,8 @@ export
     AudioOutputTester,
     AudioTester,
     FileDropArea,
+    SplitView,
+    FileDropAreaCompact,
     // native libs
     DragableBox,
     Delegate,

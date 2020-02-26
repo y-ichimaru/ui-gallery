@@ -76,6 +76,11 @@ export default class ColorPalette extends Vue
             this.$emit("input", this.value);
             this.$forceUpdate();
         }
+        else
+        {
+            this.$emit("input", this.colors[0]);
+            this.$forceUpdate();
+        }
     }
 }
 </script>
