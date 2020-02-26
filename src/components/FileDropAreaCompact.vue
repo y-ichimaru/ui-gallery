@@ -26,6 +26,7 @@ import {Vue, Component, Prop} from "vue-property-decorator";
 export default class FileDropAreaCompact extends Vue
 {
     @Prop({default: "ファイルをドロップしてください"}) readonly message!: string;
+
     private isDragOverring = false;
     private onDragOver()
     {
