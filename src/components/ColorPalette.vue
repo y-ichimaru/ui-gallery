@@ -36,7 +36,7 @@
     </v-menu>
 </template>
 <script lang="ts">
-import {Vue, Component, Prop} from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 const defaultColors = [
     "#f44336",
@@ -62,13 +62,13 @@ const defaultColors = [
 @Component
 export default class ColorPalette extends Vue
 {
-    @Prop({default: () => defaultColors}) colors!: string[];
-    @Prop({default: defaultColors[0]}) value!: string;
-    @Prop({default: 36}) buttonWidth!: number;
-    @Prop({default: 48}) readonly itemSize!: number;
-    @Prop({default: 6}) readonly column!: number;
-    @Prop({default: 2}) readonly margin!: number;
-    @Prop({default: "#2b2b2b"}) readonly backgroundColor!: string;
+    @Prop({ default: () => defaultColors }) colors!: string[];
+    @Prop({ default: defaultColors[0] }) value!: string;
+    @Prop({ default: 36 }) buttonWidth!: number;
+    @Prop({ default: 48 }) readonly itemSize!: number;
+    @Prop({ default: 6 }) readonly column!: number;
+    @Prop({ default: 2 }) readonly margin!: number;
+    @Prop({ default: "#2b2b2b" }) readonly backgroundColor!: string;
     private created()
     {
         if (this.value)

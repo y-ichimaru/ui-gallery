@@ -19,12 +19,12 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component, Watch} from "vue-property-decorator";
+import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 
 /**
  * リサイズ可能な分割ビューを提供します．
  */
-@Component({components: {}})
+@Component({ components: {} })
 export default class SplitView extends Vue
 {
     private isDragging = false;
@@ -33,27 +33,27 @@ export default class SplitView extends Vue
     /**
      * デフォルトの分割長さ
      */
-    @Prop({default: 180}) readonly defaultSplitWidth!: number;
+    @Prop({ default: 180 }) readonly defaultSplitWidth!: number;
 
     /**
      * 縦か横か
      */
-    @Prop({default: false}) readonly isVertical!: boolean;
+    @Prop({ default: false }) readonly isVertical!: boolean;
 
     /**
      * 最小長さ
      */
-    @Prop({default: 0}) readonly minWidth!: number;
+    @Prop({ default: 0 }) readonly minWidth!: number;
 
     /**
      * 最大長さ
      */
-    @Prop({default: Number.MAX_SAFE_INTEGER}) readonly maxWidth!: number;
+    @Prop({ default: Number.MAX_SAFE_INTEGER }) readonly maxWidth!: number;
 
     /**
      * ハンドルのサイズ
      */
-    @Prop({default: 4}) readonly handleSize!: number;
+    @Prop({ default: 4 }) readonly handleSize!: number;
 
     private created()
     {

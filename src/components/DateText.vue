@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component} from "vue-property-decorator";
+import { Vue, Prop, Component } from "vue-property-decorator";
 
 /**
  * @summary 日付をフォーマットして表示します.
@@ -18,7 +18,7 @@ import {Vue, Prop, Component} from "vue-property-decorator";
 export default class DateText extends Vue
 {
     // #region props
-    @Prop({default: () => new Date()}) readonly date!: Date;
+    @Prop({ default: () => new Date() }) readonly date!: Date;
     // #endregion
 }
 </script>

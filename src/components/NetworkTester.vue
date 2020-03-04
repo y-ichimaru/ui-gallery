@@ -32,16 +32,16 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component, Watch} from "vue-property-decorator";
-import {BrowserUtility, BrowserType} from "../libs/utilities/BrowserUtility";
+import { Vue, Prop, Component, Watch } from "vue-property-decorator";
+import { BrowserUtility, BrowserType } from "../libs/utilities/BrowserUtility";
 import RoomConnectionPage from "@/components/Managements/Rooms/RoomConnectionPage.vue";
 /**
  * @summary 接続設定ページのUIを提供します.
  */
-@Component({components: {}})
+@Component({ components: {} })
 export default class NetworkTester extends Vue
 {
-    @Prop({default: false}) readonly isEnabled!: boolean;
+    @Prop({ default: false }) readonly isEnabled!: boolean;
 
     /**
      * @returns ネットワーク速度を取得します.

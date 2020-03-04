@@ -19,7 +19,7 @@
     </v-dialog>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component, Mixins} from "vue-property-decorator";
+import { Vue, Prop, Component, Mixins } from "vue-property-decorator";
 import DialogBase from "./DialogBase.vue";
 
 /**

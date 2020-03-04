@@ -1,10 +1,10 @@
-import Peer, {PeerCredential, MeshRoom, RoomStream} from "skyway-js";
+import Peer, { PeerCredential, MeshRoom, RoomStream } from "skyway-js";
 
 import * as CONFIG from "./WebRtcConfig";
-import {MultiCastDelegate} from "../Core/Delegate";
-import {RtcMediaStreamWrapper, DeviceStreamManager} from "./DeviceStreamManager";
-import {IDisposeable} from "../Core/IDisposable";
-import {PeerStream} from "./VideoChatRoom";
+import { MultiCastDelegate } from "../Core/Delegate";
+import { RtcMediaStreamWrapper, DeviceStreamManager } from "./DeviceStreamManager";
+import { IDisposeable } from "../Core/IDisposable";
+import { PeerStream } from "./VideoChatRoom";
 
 /**
  * @summary 画面共有の基底クラス

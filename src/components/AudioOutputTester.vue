@@ -42,22 +42,22 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component, Watch} from "vue-property-decorator";
+import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 /**
  * @summary 接続設定ページのUIを提供します.
  */
-@Component({components: {}})
+@Component({ components: {} })
 export default class AudioOutputTester extends Vue
 {
     /**
      * オーディオが有効かどうか
      */
-    @Prop({default: false}) readonly isEnabled!: boolean;
+    @Prop({ default: false }) readonly isEnabled!: boolean;
 
     /**
      * @description テスト用音声ファイルへのパス
      */
-    @Prop({default: ""}) readonly src!: string;
+    @Prop({ default: "" }) readonly src!: string;
 
     /**
      * @summary オーディオの再生テストを実行します.

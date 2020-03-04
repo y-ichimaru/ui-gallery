@@ -1,5 +1,5 @@
-import {MultiCastDelegate} from "../Core/Delegate";
-import {DateTime} from "luxon";
+import { MultiCastDelegate } from "../Core/Delegate";
+import { DateTime } from "luxon";
 
 /**
  * @summary WebSocketにより送信するデータを表します。

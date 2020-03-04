@@ -1,5 +1,5 @@
-import {BrowserUtility, BrowserType} from "../utilities/BrowserUtility";
-import {IDisposeable} from "../Core/IDisposable";
+import { BrowserUtility, BrowserType } from "../utilities/BrowserUtility";
+import { IDisposeable } from "../Core/IDisposable";
 
 declare var CanvasCaptureMediaStreamTrack: any;
 
@@ -483,18 +483,18 @@ export class DeviceStreamManager
         const stream =
             await navigator.mediaDevices.getUserMedia({
                 audio: isAudioEnebled ? {
-                    deviceId: audioDeviceId ? {exact: audioDeviceId} : undefined,
+                    deviceId: audioDeviceId ? { exact: audioDeviceId } : undefined,
                     audioGainControl: true,
                     echoCancellation: true,
                     noiseSuppression: true,
                     echoCancellationType: "system"
                 } as any : false,
                 video: isVideoEnabled ? {
-                    deviceId: videoDeviceId ? {exact: videoDeviceId} : undefined,
+                    deviceId: videoDeviceId ? { exact: videoDeviceId } : undefined,
                     width: width * quality,
                     height: height * quality,
                     frameRate: frameRate,
-                    facingMode: facingMode ? {exact: facingMode} : undefined
+                    facingMode: facingMode ? { exact: facingMode } : undefined
                 } : false
             });
         let deviceStream: DeviceMediaStreamWrapper | undefined;

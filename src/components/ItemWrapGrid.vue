@@ -8,7 +8,7 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component} from "vue-property-decorator";
+import { Vue, Prop, Component } from "vue-property-decorator";
 
 /**
  * アイテムを折り返し表示するためのグリッドレイアウトを提供します．
@@ -20,7 +20,7 @@ export default class ItemWrapGrid extends Vue
     /**
      * 表示するアイテム
      */
-    @Prop({default: []}) readonly items!: unknown[];
+    @Prop({ default: [] }) readonly items!: unknown[];
 
     /**
      * wrapする条件

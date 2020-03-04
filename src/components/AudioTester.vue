@@ -39,22 +39,22 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component, Watch} from "vue-property-decorator";
+import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 import VolumeIndicator from "./VolumeIndicator.vue";
 /**
  * @summary 接続設定ページのUIを提供します.
  */
-@Component({components: {VolumeIndicator}})
+@Component({ components: { VolumeIndicator } })
 export default class AudioTester extends Vue
 {
     /**
      * オーディオが有効かどうか
      */
-    @Prop({default: false}) readonly isAudioEnabled!: boolean;
+    @Prop({ default: false }) readonly isAudioEnabled!: boolean;
 
     /**
      * ストリーム
      */
-    @Prop({default: () => new MediaStream()}) readonly stream!: MediaStream;
+    @Prop({ default: () => new MediaStream() }) readonly stream!: MediaStream;
 }
 </script>

@@ -9,7 +9,7 @@ import DateTimeText from "./components/DateTimeText.vue";
 import DateText from "./components/DateText.vue";
 import DialogBase from "./components/DialogBase.vue";
 import ConfirmDialog from "./components/ConfirmDialog.vue";
-import {ConfirmDialogContent} from "./components/ConfirmDialogContent";
+import { ConfirmDialogContent } from "./components/ConfirmDialogContent";
 import ElapsedTimeClock from "./components/ElapsedTimeClock.vue";
 import VolumeIndicator from "./components/VolumeIndicator.vue";
 import ItemWrapGrid from "./components/ItemWrapGrid.vue";
@@ -26,9 +26,9 @@ import SplitView from "./components/SplitView.vue";
  * @description 汎用のライブラリをまとめたパッケージです．
  */
 import DragableBox from "./libs/UI/DragableBox";
-import {MultiCastDelegate as Delegate} from "./libs/Core/Delegate";
-import {IDisposeable} from "./libs/Core/IDisposable";
-import {Logger} from "./libs/logger";
+import { MultiCastDelegate as Delegate } from "./libs/Core/Delegate";
+import { IDisposeable } from "./libs/Core/IDisposable";
+import { Logger } from "./libs/logger";
 import
 {
     DeviceInfo,
@@ -37,12 +37,12 @@ import
     DeviceStreamManager,
     RtcMediaStreamWrapper
 } from "./libs/WebRtc/DeviceStreamManager";
-import {WebSocketData, WebSocketProvider} from "./libs/WebSocket/WebSocket";
-import {getUrlParameter} from "./libs/utilities/StringUtility";
+import { WebSocketData, WebSocketProvider } from "./libs/WebSocket/WebSocket";
+import { getUrlParameter } from "./libs/utilities/StringUtility";
 import * as WebRtcConfig from "./libs/WebRtc/WebRtcConfig";
-import {ScreenShareRoom} from "./libs/WebRtc/ScreenShareRoom";
-import {VideoChatConnection, PeerStream} from "./libs/WebRtc/VideoChatRoom";
-import {BrowserType, BrowserUtility} from "./libs/utilities/BrowserUtility";
+import { ScreenShareRoom } from "./libs/WebRtc/ScreenShareRoom";
+import { VideoChatConnection, PeerStream } from "./libs/WebRtc/VideoChatRoom";
+import { BrowserType, BrowserUtility } from "./libs/utilities/BrowserUtility";
 
 // css
 import "./style.scss";

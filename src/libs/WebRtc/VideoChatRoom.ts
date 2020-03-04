@@ -1,8 +1,8 @@
-import Peer, {PeerCredential, SfuRoom, MeshRoom} from "skyway-js";
+import Peer, { PeerCredential, SfuRoom, MeshRoom } from "skyway-js";
 
 import * as CONFIG from "./WebRtcConfig";
-import {MultiCastDelegate} from "../Core/Delegate";
-import {RtcMediaStreamWrapper} from "./DeviceStreamManager";
+import { MultiCastDelegate } from "../Core/Delegate";
+import { RtcMediaStreamWrapper } from "./DeviceStreamManager";
 import StringToHexEncoderUtility from "../utilities/StringToHexEncoderUtility";
 
 export class PeerStream extends MediaStream

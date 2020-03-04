@@ -1,4 +1,4 @@
-import {IDisposeable} from "./IDisposable";
+import { IDisposeable } from "./IDisposable";
 
 /**
  * @summary マルチキャストデリゲートを実現します。

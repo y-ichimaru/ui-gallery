@@ -100,7 +100,7 @@ export default class DragableBox
 
         // マウスを動かしたとき
         document.addEventListener("mousemove", this.onMove.bind(this), true);
-        document.addEventListener("touchmove", this.onMove.bind(this), {passive: false});
+        document.addEventListener("touchmove", this.onMove.bind(this), { passive: false });
     }
 
     /**

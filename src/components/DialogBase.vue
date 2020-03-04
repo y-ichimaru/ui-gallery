@@ -1,5 +1,5 @@
 <script lang="ts">
-import {Component, Vue} from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 /**
  * @summary ダイアログを実装するための基本機能を提供します.

@@ -1,4 +1,4 @@
-import {getUrlParameter} from "../utilities/StringUtility";
+import { getUrlParameter } from "../utilities/StringUtility";
 
 // ビデオコーデック
 const VIDEO_CODEC_TYPES = {

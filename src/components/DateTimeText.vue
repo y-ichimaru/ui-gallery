@@ -2,7 +2,7 @@
     <div v-html="displayHtml"></div>
 </template>
 <script lang="ts">
-import {Vue, Prop, Component} from "vue-property-decorator";
+import { Vue, Prop, Component } from "vue-property-decorator";
 
 const DAYS = [
     "(日)",
@@ -20,7 +20,7 @@ const DAYS = [
 @Component
 export default class DateTimeText extends Vue
 {
-    @Prop({default: undefined}) text?: string;
+    @Prop({ default: undefined }) text?: string;
 
     private get displayHtml(): string
     {

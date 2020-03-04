@@ -1,7 +1,7 @@
-import {linkTo} from "@storybook/addon-links";
-import {storiesOf} from "@storybook/vue";
-import {withInfo} from "storybook-addon-vue-info";
-import {action} from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
+import { storiesOf } from "@storybook/vue";
+import { withInfo } from "storybook-addon-vue-info";
+import { action } from "@storybook/addon-actions";
 
 import ItemWrapGrid from "../components/ItemWrapGrid.vue";
 import ContextMenu from "../components/ContextMenu.vue";
@@ -17,13 +17,13 @@ import DragableBox from "../components/DragableBox.vue";
 
 import ColorPaletteFlyout from "../components/ColorPaletteFlyout.vue";
 
-import {DeviceStreamManager, DeviceMediaStreamWrapper} from "../libs/WebRtc/DeviceStreamManager";
+import { DeviceStreamManager, DeviceMediaStreamWrapper } from "../libs/WebRtc/DeviceStreamManager";
 
 import axios from "axios";
 
 storiesOf("岡田シリーズ", module)
     .add("ItemWrapGrid", () => ({
-        components: {ItemWrapGrid},
+        components: { ItemWrapGrid },
         template: `
         <ItemWrapGrid :items="gridItems">
             <template v-slot:item="{item}">
@@ -51,7 +51,7 @@ storiesOf("岡田シリーズ", module)
         {
             this.gridItems = (await axios.get("https://ghibliapi.herokuapp.com/films/")).data;
         },
-        methods: {action: action("button-clicked")}
+        methods: { action: action("button-clicked") }
     }), {
         info: {
             summary: "アイテムを折り返し表示するためのグリッドレイアウトを提供します．要素の幅に応じて列の数が変わります．"
@@ -60,7 +60,7 @@ storiesOf("岡田シリーズ", module)
 
 storiesOf("岡田シリーズ", module)
     .add("ContextMenu", () => ({
-        components: {ContextMenu},
+        components: { ContextMenu },
         template: `
         <div>
             <div>
@@ -109,7 +109,7 @@ storiesOf("岡田シリーズ", module)
 
 storiesOf("岡田シリーズ", module)
     .add("FileDropArea", () => ({
-        components: {FileDropArea, FileDropAreaCompact},
+        components: { FileDropArea, FileDropAreaCompact },
         template: `
         <div>
             <FileDropArea style="height:380px;"/>
@@ -127,7 +127,7 @@ storiesOf("岡田シリーズ", module)
 
 storiesOf("岡田シリーズ", module)
     .add("WebRtcTester", () => ({
-        components: {AudioOutputTester, AudioTester, NetworkTester},
+        components: { AudioOutputTester, AudioTester, NetworkTester },
         template: `
         <div style="display:flex;width:680px;">
             <NetworkTester/>
@@ -157,7 +157,7 @@ storiesOf("岡田シリーズ", module)
 
 storiesOf("岡田シリーズ", module)
     .add("SplitView", () => ({
-        components: {SplitView},
+        components: { SplitView },
         template: `
         <div style="display:flex;height:680px;background:rgba(0,0,0,0.2)">
             <SplitView class="strech">
@@ -178,7 +178,7 @@ storiesOf("岡田シリーズ", module)
 
 storiesOf("岡田シリーズ", module)
     .add("DragableBox", () => ({
-        components: {DragableBox},
+        components: { DragableBox },
         template: `
         <DragableBox >
             <div class="strech" style="background:rgb(72,72,72);">
@@ -196,7 +196,7 @@ storiesOf("岡田シリーズ", module)
         `,
         data()
         {
-            return {stream: null};
+            return { stream: null };
         },
         async created()
         {
@@ -218,7 +218,7 @@ storiesOf("岡田シリーズ", module)
 
 storiesOf("岡田シリーズ", module)
     .add("ColorPalette", () => ({
-        components: {ColorPalette, ColorPaletteFlyout},
+        components: { ColorPalette, ColorPaletteFlyout },
         template: `
         <div >
             <!-- パレット -->
@@ -232,7 +232,6 @@ storiesOf("岡田シリーズ", module)
                         elevation="1"
                         :color="selected2"
                         dark
-                        :style="{minWidth:buttonWidth+'px',width:buttonWidth+'px'}"
                         v-on="on"
                     >クリックしてね</v-btn>
                 </template>
@@ -241,7 +240,7 @@ storiesOf("岡田シリーズ", module)
         `,
         data()
         {
-            return {selected1: null, selected2: null};
+            return { selected1: null, selected2: null };
         }
     }), {
         info: {

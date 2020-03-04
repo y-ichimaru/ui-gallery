@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import {Vue, Component, Prop} from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 /**
  * ファイルをドロップして受け取るエリアを提供します．
@@ -25,7 +25,7 @@ import {Vue, Component, Prop} from "vue-property-decorator";
 @Component
 export default class FileDropAreaCompact extends Vue
 {
-    @Prop({default: "ファイルをドロップしてください"}) readonly message!: string;
+    @Prop({ default: "ファイルをドロップしてください" }) readonly message!: string;
 
     private isDragOverring = false;
     private onDragOver()
