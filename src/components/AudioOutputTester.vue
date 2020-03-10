@@ -42,6 +42,12 @@
     </div>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
+
 import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 /**
  * @summary 接続設定ページのUIを提供します.

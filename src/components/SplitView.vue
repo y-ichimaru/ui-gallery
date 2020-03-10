@@ -19,6 +19,11 @@
     </div>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 
 /**

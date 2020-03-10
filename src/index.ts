@@ -1,51 +1,27 @@
-/**
- * @package UI-Gallery
- * @description 汎用のVue Component群をまとめたパッケージです．
- */
-import ColorPalette from "./components/ColorPalette.vue";
-import ColorPaletteFlyout from "./components/ColorPaletteFlyout.vue";
-import DragableBoxView from "./components/DragableBox.vue";
-import DateTimeText from "./components/DateTimeText.vue";
-import DateText from "./components/DateText.vue";
-import DialogBase from "./components/DialogBase.vue";
-import ConfirmDialog from "./components/ConfirmDialog.vue";
-import { ConfirmDialogContent } from "./components/ConfirmDialogContent";
-import ElapsedTimeClock from "./components/ElapsedTimeClock.vue";
-import VolumeIndicator from "./components/VolumeIndicator.vue";
-import ItemWrapGrid from "./components/ItemWrapGrid.vue";
-import ContextMenu from "./components/ContextMenu.vue";
-import NetworkTester from "./components/NetworkTester.vue";
-import AudioOutputTester from "./components/AudioOutputTester.vue";
-import AudioTester from "./components/AudioTester.vue";
-import FileDropArea from "./components/FileDropArea.vue";
-import FileDropAreaCompact from "./components/FileDropAreaCompact.vue";
-import SplitView from "./components/SplitView.vue";
+import * as Components from "./components";
+import * as Core from "./core";
+import * as Rtc from "./rtc";
 
-/**
- * @package Libs
- * @description 汎用のライブラリをまとめたパッケージです．
- */
-import DragableBox from "./libs/UI/DragableBox";
-import { MultiCastDelegate as Delegate } from "./libs/Core/Delegate";
-import { IDisposeable } from "./libs/Core/IDisposable";
-import { Logger } from "./libs/logger";
-import
+declare enum LogType
 {
-    DeviceInfo,
-    DeviceList,
-    DeviceMediaStreamWrapper,
-    DeviceStreamManager,
-    RtcMediaStreamWrapper
-} from "./libs/WebRtc/DeviceStreamManager";
-import { WebSocketData, WebSocketProvider } from "./libs/WebSocket/WebSocket";
-import { getUrlParameter } from "./libs/utilities/StringUtility";
-import * as WebRtcConfig from "./libs/WebRtc/WebRtcConfig";
-import { ScreenShareRoom } from "./libs/WebRtc/ScreenShareRoom";
-import { VideoChatConnection, PeerStream } from "./libs/WebRtc/VideoChatRoom";
-import { BrowserType, BrowserUtility } from "./libs/utilities/BrowserUtility";
+    Log = 1 << 0,
+    Error = 1 << 1,
+    Warning = 1 << 1,
+}
 
-// css
-import "./style.scss";
+export interface Logger
+{
+    onTraceHandler: (log: unknown, type?: LogType) => void;
+    trace(content: any, type: LogType): void;
+    onErrorHandler: (log: unknown, type?: LogType) => void;
+    error(content: any, type?: LogType): void;
+    onInfoHandler: (log: unknown, type?: LogType) => void;
+    info(content: any, type?: LogType): void;
+    onLogHandler: (log: unknown, type?: LogType) => void;
+    log(content: any, type?: LogType): void;
+    onWarnHandler: (log: unknown, type?: LogType) => void;
+    warn(content: any, type?: LogType): void;
+}
 
 declare global
 {
@@ -54,40 +30,7 @@ declare global
 
 export
 {
-    // vue components
-    ColorPalette,
-    ColorPaletteFlyout,
-    DragableBoxView,
-    DateTimeText,
-    DateText,
-    ConfirmDialog,
-    ElapsedTimeClock,
-    VolumeIndicator,
-    ConfirmDialogContent,
-    DialogBase,
-    ItemWrapGrid,
-    ContextMenu,
-    NetworkTester,
-    AudioOutputTester,
-    AudioTester,
-    FileDropArea,
-    SplitView,
-    FileDropAreaCompact,
-    // native libs
-    DragableBox,
-    Delegate,
-    DeviceInfo,
-    DeviceList,
-    DeviceMediaStreamWrapper,
-    DeviceStreamManager,
-    RtcMediaStreamWrapper,
-    WebRtcConfig,
-    ScreenShareRoom,
-    VideoChatConnection,
-    PeerStream,
-    IDisposeable,
-    getUrlParameter,
-    BrowserType,
-    BrowserUtility,
-    Logger, WebSocketData, WebSocketProvider
+    Components,
+    Core,
+    Rtc
 };

@@ -62,7 +62,7 @@
                 </div>
                 <!-- <div :style="`height:calc(100% - ${closedHeaderHeight}px);`">
                     <slot name="header"></slot>
-                </div> -->
+                </div>-->
             </div>
             <div
                 :class="isDragging?'elevation-8':'elevation-2'"
@@ -82,116 +82,92 @@
         </div>
     </div>
 </template>
-<script >
-import DragableBox from "../libs/UI/DragableBox";
+<script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
+import { Vue, Component, Prop } from "vue-property-decorator";
+import DragableBox from "../core/UI/DragableBox";
 
-export default {
-    name: "small-video-box",
-    computed: {
-    },
-    props: {
-        fixed: {
-            type: Boolean,
-            default: false,
-            require: true
-        },
-        top: {
-            type: String,
-            require: true,
-            default: ""
-        },
-        bottom: {
-            type: String,
-            require: true,
-            default: ""
-        },
-        right: {
-            type: String,
-            require: true,
-            default: ""
-        },
-        left: {
-            type: String,
-            require: true,
-            default: ""
-        },
-        width: {
-            type: String,
-            require: true,
-            default: "248"
-        },
-        height: {
-            type: String,
-            require: true,
-            default: "168"
-        },
-        closedHeaderHeight: {
-            type: String,
-            require: true,
-            default: "0"
-        },
-        openedHeaderHeight: {
-            type: String,
-            require: true,
-            default: "300"
-        },
-        headerColor: {
-            type: String,
-            require: true,
-            default: "rgb(215, 215, 215)"
-        }
-    },
-    data()
+@Component
+export default class extends Vue
+{
+    @Prop({ default: true }) readonly fixed!: boolean;
+    @Prop({ default: "" }) readonly top!: string;
+    @Prop({ default: "" }) readonly right!: string;
+    @Prop({ default: "" }) readonly bottom!: string;
+    @Prop({ default: "" }) readonly left!: string;
+    @Prop({ default: "248" }) readonly width!: string;
+    @Prop({ default: "168" }) readonly height!: string;
+    @Prop({ default: "0" }) readonly closedHeaderHeight!: string;
+    @Prop({ default: "300" }) readonly openedHeaderHeight!: string;
+    @Prop({ default: "rgb(215, 215, 215)" }) readonly headerColor!: string;
+
+    private dragableBox?: DragableBox = undefined;
+    private isFixed = true;
+    private isDragging = false;
+
+    private onBeginMove(e: MouseEvent)
     {
-        return {
-            isHeaderOpend: false,
-            dragableBox: null,
-            isFixed: true,
-            isDragging: false
-        };
-    },
-    methods: {
-        // 移動開始ハンドルをクリックしたとき
-        onBeginMove(e)
-        {
-            this.isFixed = false;
-            this.isDragging = true;
-            this.dragableBox.beginMove(e);
-        },
+        this.isFixed = false;
+        this.isDragging = true;
+        if (this.dragableBox) this.dragableBox.beginMove(e);
+    }
 
-        // ビデオを画面右下に固定
-        applyVideoFixed()
+    // ビデオを画面右下に固定
+    private applyVideoFixed()
+    {
+        const element = this.$refs.videoBox as HTMLElement | undefined;
+        if (element)
         {
-            if (this.$refs.videoBox)
-            {
-                this.isFixed = true;
-                const style = this.$refs.videoBox.style;
-                style.bottom = this.bottom;
-                style.left = this.left;
-                style.top = this.top;
-                style.right = this.right;
-            }
-        },
-
-        getRect()
-        {
-            return this.$refs.videoBox.getBoundingClientRect();
+            this.isFixed = true;
+            const style = element.style;
+            style.bottom = this.bottom;
+            style.left = this.left;
+            style.top = this.top;
+            style.right = this.right;
         }
-    },
-    created()
+    }
+
+    private getRect(): ClientRect | undefined
+    {
+        const element = this.$refs.videoBox as HTMLElement | undefined;
+        if (element)
+        {
+            return element.getBoundingClientRect();
+        }
+        return undefined;
+    }
+
+    private onMouseUp()
+    {
+        this.isDragging = false;
+    }
+
+    private created()
     {
         // マウスクリックをやめたとき
-        document.addEventListener("mouseup", () =>
-        {
-            this.isDragging = false;
-        }, true);
-    },
-    mounted()
+        document.addEventListener("mouseup", this.onMouseUp, true);
+    }
+
+    private mounted()
     {
         this.applyVideoFixed();
-        this.dragableBox = new DragableBox(this.$refs.videoBox, this.$refs.dropVideoBox, this.applyVideoFixed.bind(this));
+        const video = this.$refs.videoBox as HTMLElement | undefined;
+        const box = this.$refs.dropVideoBox as HTMLElement | undefined;
+        if (video && box)
+        {
+            this.dragableBox = new DragableBox(video, box, this.applyVideoFixed.bind(this));
+        }
     }
-};
+
+    private beforeDestroy()
+    {
+        document.removeEventListener("mouseup", this.onMouseUp, true);
+    }
+}
 </script>
 <style scoped>
 /* ビデオボックスを固定するかどうかを切り替えるボックス */

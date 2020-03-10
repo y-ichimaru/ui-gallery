@@ -30,6 +30,11 @@
     </v-menu>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 const defaultColors = [

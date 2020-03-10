@@ -6,6 +6,11 @@
     </v-dialog>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Vue, Component } from "vue-property-decorator";
 
 @Component

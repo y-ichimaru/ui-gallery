@@ -1,200 +1,190 @@
 <template>
     <canvas ref="canvas" :style="{height:height+'px',width: '100%'}"></canvas>
 </template>
-<script>
+<script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
-export default {
-    name: "volume-indicator",
-    props: {
-        stream: {
-        },
-        isEnabled: {
-            type: Boolean,
-            default: false
-        },
-        indicatorCount: {
-            type: Number,
-            default: 12
-        },
-        height: {
-            type: Number,
-            default: 30
-        },
-        span: {
-            type: Number,
-            default: 1
-        },
-        color: {
-            type: String,
-            default: "#ff9d55"
-        },
-        emptyColor: {
-            type: String,
-            default: "rgb(180,180,180)"
-        }
-    },
-    data()
+/**
+ * ファイルをドロップして受け取るエリアを提供します．
+ */
+@Component
+export default class VolumeIndicator extends Vue
+{
+    @Prop({ default: () => new MediaStream() }) readonly stream!: MediaStream;
+    @Prop({ default: () => new MediaStream() }) isEnabled!: boolean;
+    @Prop({ default: 12 }) indicatorCount!: number;
+    @Prop({ default: 30 }) height!: number;
+    @Prop({ default: 1 }) span!: number;
+    @Prop({ default: "#ff9d55" }) color!: string;
+    @Prop({ default: "rgb(180,180,180)" }) emptyColor!: string;
+    private intervalId = 0;
+    private audioContext?: AudioContext;
+
+    @Watch("isEnabled")
+    isEnabledChanged(value: boolean)
     {
-        return {
-            intervalId: 0,
-            audioContext: null
-        };
-    },
-    watch: {
-        isEnabled(value)
+        this.kill();
+        this.begin();
+    }
+
+    @Watch("stream")
+    streamChanged(value: MediaStream)
+    {
+        if (this.isEnabled && value instanceof MediaStream)
         {
             this.kill();
             this.begin();
-        },
-        stream(value)
-        {
-            if (this.isEnabled && value instanceof MediaStream)
-            {
-                this.kill();
-                this.begin();
-            }
         }
-    },
-    methods: {
-        begin()
+    }
+
+    begin()
+    {
+        if (!this.stream || this.stream.getAudioTracks().length === 0)
         {
-            if (!this.stream || this.stream.getAudioTracks().length === 0)
+            return;
+        }
+        const analyzer = this.createAnalyzer(this.stream);
+
+        const canvas = this.$refs.canvas as HTMLCanvasElement | undefined;
+        if (!canvas) return;
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        const context = canvas.getContext("2d");
+        if (!context) return;
+
+        const rectItemWidth = canvas.width / this.indicatorCount;
+
+        /**
+         * 角が丸い四角形を描画
+         */
+        const roundRect = (ctx: CanvasRenderingContext2D,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            radius: number = 5,
+            fill: boolean = true,
+            stroke: boolean = true) =>
+        {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            if (stroke)
             {
+                ctx.stroke();
+            }
+            if (fill)
+            {
+                ctx.fill();
+            }
+        };
+
+        // フレーム描画開始
+        this.intervalId = setInterval(() =>
+        {
+            // 背景をクリア
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (!analyzer)
+            {
+                for (let i = 0; i < this.indicatorCount; i++)
+                {
+                    context.fillStyle = "#bd0b0b0";
+                    roundRect(context, i * rectItemWidth + this.span, 2, rectItemWidth - (this.span * 2), canvas.height - 4, 3, true, false);
+                }
                 return;
             }
-            const analyzer = this.createAnalyzer(this.stream);
 
-            const canvas = this.$refs.canvas;
-            canvas.width = canvas.clientWidth;
-            canvas.height = canvas.clientHeight;
-            const context = canvas.getContext("2d");
-
-            const rectItemWidth = canvas.width / this.indicatorCount;
-
-            /**
-             * 角が丸い四角形を描画
-             */
-            const roundRect = (ctx, x, y, width, height, radius, fill, stroke) =>
+            const spectrums = new Uint8Array(analyzer.frequencyBinCount);
+            analyzer.getByteFrequencyData(spectrums);
+            if (spectrums[0])
             {
-                if (typeof stroke === "undefined")
-                {
-                    stroke = true;
-                }
-                if (typeof radius === "undefined")
-                {
-                    radius = 5;
-                }
-                ctx.beginPath();
-                ctx.moveTo(x + radius, y);
-                ctx.lineTo(x + width - radius, y);
-                ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-                ctx.lineTo(x + width, y + height - radius);
-                ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-                ctx.lineTo(x + radius, y + height);
-                ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-                ctx.lineTo(x, y + radius);
-                ctx.quadraticCurveTo(x, y, x + radius, y);
-                ctx.closePath();
-                if (stroke)
-                {
-                    ctx.stroke();
-                }
-                if (fill)
-                {
-                    ctx.fill();
-                }
-            };
-
-            // フレーム描画開始
-            this.intervalId = setInterval(() =>
+                this.$emit("audioInput", true);
+            }
+            else
             {
-                // 背景をクリア
-                context.clearRect(0, 0, canvas.width, canvas.height);
+                this.$emit("audioInput", false);
+            }
 
-                if (!analyzer)
-                {
-                    for (let i = 0; i < this.indicatorCount; i++)
-                    {
-                        context.fillStyle = "#bd0b0b0";
-                        roundRect(context, i * rectItemWidth + this.span, 2, rectItemWidth - (this.span * 2), canvas.height - 4, 3, true, false);
-                    }
-                    return;
-                }
+            let level = spectrums[0] + spectrums[1];
+            level *= 0.5;
+            level = (level / 255) * this.indicatorCount;
 
-                const spectrums = new Uint8Array(analyzer.frequencyBinCount);
-                analyzer.getByteFrequencyData(spectrums);
-                if (spectrums[0])
+            const l = parseInt(level.toString());
+            for (let i = 0; i < this.indicatorCount; i++)
+            {
+                if (i < l && this.isEnabled)
                 {
-                    this.$emit("audioInput", true);
+                    context.fillStyle = this.color;
                 }
                 else
                 {
-                    this.$emit("audioInput", false);
+                    context.fillStyle = this.emptyColor;
                 }
 
-                let level = spectrums[0] + spectrums[1];
-                level *= 0.5;
-                level = (level / 255) * this.indicatorCount;
+                roundRect(context, i * rectItemWidth + this.span, 2, rectItemWidth - (this.span * 2), canvas.height - 4, 3, true, false);
+            }
+        }, 200) as any as number;
+    }
 
-                const l = parseInt(level);
-                for (let i = 0; i < this.indicatorCount; i++)
-                {
-                    if (i < l && this.isEnabled)
-                    {
-                        context.fillStyle = this.color;
-                    }
-                    else
-                    {
-                        context.fillStyle = this.emptyColor;
-                    }
-
-                    roundRect(context, i * rectItemWidth + this.span, 2, rectItemWidth - (this.span * 2), canvas.height - 4, 3, true, false);
-                }
-            }, 200);
-        },
-        kill()
+    kill()
+    {
+        clearInterval(this.intervalId);
+        this.intervalId = 0;
+        try
         {
-            clearInterval(this.intervalId);
-            this.intervalId = 0;
-            try
+            if (this.audioContext)
             {
-                if (this.audioContext)
-                {
-                    // this.audioContext.close();
-                }
-            }
-            catch (ex)
-            {
-                console.warn(ex);
-            }
-        },
-        createAnalyzer(stream)
-        {
-            try
-            {
-                const _AudioContext = window.AudioContext || window.webkitAudioContext;
-                const audioContext = this.audioContext = new _AudioContext();
-                const analyzer = audioContext.createAnalyser();
-
-                const microphone = audioContext.createMediaStreamSource(stream);
-                microphone.connect(analyzer);
-                analyzer.smoothingTimeConstant = 0.3;
-                analyzer.fftSize = 32;
-                return analyzer;
-            }
-            catch (ex)
-            {
-                logger.error(ex.message);
+                // this.audioContext.close();
             }
         }
-    },
+        catch (ex)
+        {
+            console.warn(ex);
+        }
+    }
+
+    createAnalyzer(stream: MediaStream)
+    {
+        try
+        {
+            const _AudioContext = (window as any).AudioContext || (window as any).webkitAudioContext;
+            const audioContext = this.audioContext = new _AudioContext();
+            const analyzer = audioContext.createAnalyser();
+
+            const microphone = audioContext.createMediaStreamSource(stream);
+            microphone.connect(analyzer);
+            analyzer.smoothingTimeConstant = 0.3;
+            analyzer.fftSize = 32;
+            return analyzer;
+        }
+        catch (ex)
+        {
+            logger.error(ex.message);
+        }
+    }
+
     mounted()
     {
         this.begin();
-    },
+    }
+
     beforeDestroy()
     {
         this.kill();
     }
-};
+}
 </script>

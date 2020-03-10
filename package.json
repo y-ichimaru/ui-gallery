@@ -5,13 +5,17 @@
   "scripts": {
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib --name build ./src/index.ts --dest ./build",
+    "build:main": "vue-cli-service build --target lib --name build --dest ./build ./src/index.ts",
+    "build:document": "dotnet script build-type.csx",
+    "build:rtc": "vue-cli-service build --target lib --name build --dest ./build ./src/index.rtc.ts",
+    "build:components": "vue-cli-service build --target lib --name build --dest ./build ./src/index.ui.ts",
+    "build:core": "vue-cli-service build --target lib --name build --dest ./build ./src/index.ts",
     "build:type": "dotnet script build-type.csx",
     "storybook": "start-storybook -p 6006",
-    "build:story": "build-storybook -c .storybook -o docs"
+    "build:story": "build-storybook -c .storybook -o docs/storybook"
   },
   "main": "build/build.common.js",
-  "types": "build/src/index.d.ts",
+  "types": "build/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:scene-live/ui-gallery.git"
@@ -26,6 +30,7 @@
     "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
+    "@babel/types": "^7.8.7",
     "@storybook/addon-actions": "^5.3.13",
     "@storybook/addon-knobs": "^5.3.13",
     "@storybook/addon-links": "^5.3.13",
@@ -51,6 +56,8 @@
     "sass": "^1.19.0",
     "sass-loader": "^8.0.2",
     "storybook-addon-vue-info": "^1.4.1",
+    "typedoc": "^0.16.11",
+    "typedoc-plugin-external-module-name": "^3.0.0",
     "typescript": "~3.8.2",
     "vue-cli-plugin-webpack-bundle-analyzer": "^2.0.0",
     "vue-docgen-api": "^4.9.0",

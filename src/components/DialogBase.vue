@@ -1,4 +1,9 @@
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Component, Vue } from "vue-property-decorator";
 
 /**

@@ -19,6 +19,11 @@
     </div>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Vue, Prop, Component } from "vue-property-decorator";
 
 /**
@@ -39,7 +44,7 @@ export default class FileDropArea extends Vue
         e.preventDefault();
         this.isDragOverring = false;
         if (!e.dataTransfer) return;
-        const [file] = e.dataTransfer.files;
+        const file = e.dataTransfer.files[0];
         if (!file || file.type.indexOf("image/") < 0) return;
         /**
          * 画像ファイルがドロップされたとき

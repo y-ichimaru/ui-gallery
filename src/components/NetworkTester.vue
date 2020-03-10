@@ -32,9 +32,14 @@
     </div>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Vue, Prop, Component, Watch } from "vue-property-decorator";
-import { BrowserUtility, BrowserType } from "../libs/utilities/BrowserUtility";
-import RoomConnectionPage from "@/components/Managements/Rooms/RoomConnectionPage.vue";
+import { BrowserUtility, BrowserType } from "../core/utilities/BrowserUtility";
+
 /**
  * @summary 接続設定ページのUIを提供します.
  */

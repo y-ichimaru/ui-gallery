@@ -8,6 +8,11 @@
     </div>
 </template>
 <script lang="ts">
+/**
+ * @packageDocumentation
+ * @module Components
+ * @preferred
+ */
 import { Vue, Prop, Component } from "vue-property-decorator";
 
 /**

@@ -4,7 +4,7 @@ import {withInfo} from 'storybook-addon-vue-info';
 import Vue from "vue";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.css";
-import ThemeSelecterContainer from "../src/stories/ThemeSelecterContainer.vue";
+import ThemeSelecterContainer from "../stories/ThemeSelecterContainer.vue";
 import "../src/style.scss";
 import colors from "vuetify/lib/util/colors";
 import ja from "vuetify/src/locale/ja";
@@ -12,7 +12,7 @@ import ja from "vuetify/src/locale/ja";
 Vue.use(Vuetify, {
     iconfont: "mdi"
 });
-import "../src/libs/logger";
+import "../src/core/logger";
 
 import {themes} from '@storybook/theming';
 
@@ -63,6 +63,6 @@ addParameters({
 
 
 // automatically import all files ending in *.stories.js
-configure(require.context('../src/stories', true, /\.stories\.js$/), module);
+configure(require.context('../stories', true, /\.stories\.js$/), module);
 addDecorator(withInfo);
 addDecorator(withKnobs);
