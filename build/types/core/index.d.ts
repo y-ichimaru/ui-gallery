@@ -1,4 +1,4 @@
-import "logger";
+import "./logger";
 export * from "./WebSocket";
 export * from "./Color";
 export * from "./Delegate";

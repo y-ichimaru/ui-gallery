@@ -1,7 +1,4 @@
-import * as Components from "./components";
-import * as Core from "./core";
-import * as Rtc from "./rtc";
-
+import "./style.scss";
 declare enum LogType
 {
     Log = 1 << 0,
@@ -9,7 +6,7 @@ declare enum LogType
     Warning = 1 << 1,
 }
 
-export interface Logger
+declare interface Logger
 {
     onTraceHandler: (log: unknown, type?: LogType) => void;
     trace(content: any, type: LogType): void;
@@ -28,9 +25,6 @@ declare global
     var logger: Logger;
 }
 
-export
-{
-    Components,
-    Core,
-    Rtc
-};
+export * from "./components";
+export * from "./core";
+export * from "./rtc";

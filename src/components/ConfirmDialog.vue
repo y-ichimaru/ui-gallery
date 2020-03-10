@@ -26,12 +26,13 @@
  */
 import { Vue, Prop, Component, Mixins } from "vue-property-decorator";
 import DialogBase from "./DialogBase.vue";
+import { ConfirmDialogContent } from "./ConfirmDialogContent";
 
 /**
  * @summary 確認用ダイアログを提供します.
  */
 @Component
-export default class ConfirmDialog extends Mixins(DialogBase)
+export default class ConfirmDialog extends DialogBase<ConfirmDialogContent, boolean>
 {
 }
 </script>

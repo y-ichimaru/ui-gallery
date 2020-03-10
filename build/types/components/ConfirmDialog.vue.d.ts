@@ -1,8 +1,7 @@
 import DialogBase from "./DialogBase.vue";
-declare const ConfirmDialog_base;
+import { ConfirmDialogContent } from "./ConfirmDialogContent";
 /**
  * @summary 確認用ダイアログを提供します.
  */
-export default class ConfirmDialog extends ConfirmDialog_base {
+export default class ConfirmDialog extends DialogBase<ConfirmDialogContent, boolean> {
 }
-export {};
