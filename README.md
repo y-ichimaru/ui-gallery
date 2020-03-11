@@ -1,5 +1,10 @@
 # vue-ui-gallery
 
+##ドキュメント
+
+[UIカタログ]](https://scene-live.github.io/ui-gallery/storybook)
+[APIリファレンス](https://scene-live.github.io/ui-gallery/docs)
+
 # 自身のプロジェクトにインストールるするには
 Githubのリポジトリをそのままnpmパッケージとして利用することができます。
 packeage.jsonに下記を追加してyarnを実行するか
@@ -56,8 +61,6 @@ yarn build:story
 ```
 
 ビルドの出力先は/docsです。このディレクトリがGithub Pagesと連動していて、このディレクトリ配下のファイルを書き換えることで、ページを更新します。
-
-[DEMO](https://scene-live.github.io/ui-gallery/)
 
 
 ### Run your unit tests
