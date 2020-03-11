@@ -2,9 +2,9 @@
 
 ドキュメント
 
-[UIカタログ](https://scene-live.github.io/ui-gallery/storybook){:target="_blank"}
+[UIカタログ](https://scene-live.github.io/ui-gallery/storybook)
 
-[APIリファレンス](https://scene-live.github.io/ui-gallery/docs){:target="_blank"}
+[APIリファレンス](https://scene-live.github.io/ui-gallery/docs)
 
 # 自身のプロジェクトにインストールるするには
 Githubのリポジトリをそのままnpmパッケージとして利用することができます。
