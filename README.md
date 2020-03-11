@@ -2,7 +2,7 @@
 
 ##ドキュメント
 
-[UIカタログ]](https://scene-live.github.io/ui-gallery/storybook)
+[UIカタログ](https://scene-live.github.io/ui-gallery/storybook)
 [APIリファレンス](https://scene-live.github.io/ui-gallery/docs)
 
 # 自身のプロジェクトにインストールるするには
