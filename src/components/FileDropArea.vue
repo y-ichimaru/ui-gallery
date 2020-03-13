@@ -1,6 +1,6 @@
 <template>
     <div
-        class="strech drop-area relative"
+        class="stretch drop-area relative"
         :class="isDraggingOver?'drop-area drag-over':''"
         style="min-width:400px;"
         @dragover.prevent="onDragOver"
