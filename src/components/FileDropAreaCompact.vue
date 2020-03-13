@@ -1,15 +1,15 @@
 <template>
     <div
         v-ripple
-        class="strech drop-area d-flex flex-column justify-center aligh-center"
-        :class="isDragOverring?'drop-area drag-over':''"
+        class="strech drop-area d-flex flex-column justify-center align-center"
+        :class="isDraggingOver?'drop-area drag-over':''"
         style
         @dragover.prevent="onDragOver"
         @drop.prevent="drop"
         @dragleave="onDragLeave"
     >
         <v-icon
-            :class="isDragOverring?'upload-icon':''"
+            :class="isDraggingOver?'upload-icon':''"
             style="font-size:64px;margin-top:-20px;"
             color="primary"
         >mdi-cloud-upload-outline</v-icon>
@@ -32,16 +32,16 @@ export default class FileDropAreaCompact extends Vue
 {
     @Prop({ default: "ファイルをドロップしてください" }) readonly message!: string;
 
-    private isDragOverring = false;
+    private isDraggingOver= false;
     private onDragOver()
     {
-        this.isDragOverring = true;
+        this.isDraggingOver = true;
     }
 
     private drop(e: DragEvent)
     {
         e.preventDefault();
-        this.isDragOverring = false;
+        this.isDraggingOver = false;
         if (!e.dataTransfer) return;
         const file = e.dataTransfer.files[0];
         if (!file || file.type.indexOf("image/") < 0) return;
@@ -54,7 +54,7 @@ export default class FileDropAreaCompact extends Vue
 
     private onDragLeave()
     {
-        this.isDragOverring = false;
+        this.isDraggingOver = false;
     }
 }
 </script>

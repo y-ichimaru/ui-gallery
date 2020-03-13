@@ -1,7 +1,7 @@
 <template>
     <div
         class="strech drop-area relative"
-        :class="isDragOverring?'drop-area drag-over':''"
+        :class="isDraggingOver?'drop-area drag-over':''"
         style="min-width:400px;"
         @dragover.prevent="onDragOver"
         @drop.prevent="drop"
@@ -9,7 +9,7 @@
     >
         <div class="absolute-center">
             <v-icon
-                :class="isDragOverring?'upload-icon':''"
+                :class="isDraggingOver?'upload-icon':''"
                 style="font-size:72px;margin-top:-20px;"
                 color="primary"
             >mdi-cloud-upload-outline</v-icon>
@@ -33,16 +33,16 @@ import { Vue, Prop, Component } from "vue-property-decorator";
 export default class FileDropArea extends Vue
 {
     @Prop({ default: "ファイルをドロップしてください" }) readonly message!: string;
-    private isDragOverring = false;
+    private isDraggingOver= false;
     private onDragOver()
     {
-        this.isDragOverring = true;
+        this.isDraggingOver = true;
     }
 
     private drop(e: DragEvent)
     {
         e.preventDefault();
-        this.isDragOverring = false;
+        this.isDraggingOver = false;
         if (!e.dataTransfer) return;
         const file = e.dataTransfer.files[0];
         if (!file || file.type.indexOf("image/") < 0) return;
@@ -55,7 +55,7 @@ export default class FileDropArea extends Vue
 
     private onDragLeave()
     {
-        this.isDragOverring = false;
+        this.isDraggingOver = false;
     }
 }
 </script>
