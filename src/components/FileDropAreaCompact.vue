@@ -32,7 +32,7 @@ export default class FileDropAreaCompact extends Vue
 {
     @Prop({ default: "ファイルをドロップしてください" }) readonly message!: string;
 
-    private isDraggingOver= false;
+    private isDraggingOver = false;
     private onDragOver()
     {
         this.isDraggingOver = true;
